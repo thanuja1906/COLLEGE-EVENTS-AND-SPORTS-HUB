@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVRIT Events | BVRIT Sports Complex</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Header styles - solid white background */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #FF8C00;
+        }
+        
+        .current-page {
+            color: #FF8C00;
+            font-weight: bold;
+        }
+        
+        /* Hero section with background image - starts below header */
+        #events-hero {
+            height: 400px;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtIgOanE40aIR2n_b2aSrX16Nup1Yqp-IbHA&s');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px; /* Push it below the fixed header */
+        }
+        
+        #events-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 51, 102, 0.7);
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .section-btn {
+            padding: 10px 20px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .section-btn:hover {
+            background-color: #FF8C00;
+        }
+
+        .section-btn.active {
+            background-color: #FF8C00;
+        }
+
+        .events-section {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .events-section.active-section {
+            display: block;
+        }
+
+        .events-section h2 {
+            color: #003366;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        /* Upcoming Events Scroller Styles */
+        .scroller-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .scroller-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+
+        /* Pause animation on hover */
+        .scroller-container:hover .scroller-track {
+            animation-play-state: paused;
+        }
+
+        .event-item {
+            min-width: 250px;
+            height: 150px;
+            background-color: #003366;
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .event-tag {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Past Events Styles */
+        .past-events-section {
+            padding: 20px;
+        }
+
+        .past-events-section h3 {
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .past-events-section ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .past-events-section li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* Event Gallery Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .slideshow-container:hover .gallery-image {
+            animation-play-state: paused;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-container img.active {
+            opacity: 1;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<!-- <script>
+    // Highlight current page in navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('nav ul li a');
+        
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (currentPage === linkPage) {
+                link.classList.add('current-page');
+            }
+        });
+    });
+</script> -->
+
+<body class="events-page">
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bvritSports.html">BVRIT Sports</a></li>
+                    <li><a href="bvritEvents.html" class="current-page">BVRIT Events</a></li>
+                    <li><a href="login.html">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="events-hero">
+        <div class="hero-content">
+            <h1>BVRIT Events</h1>
+            <p>Celebrating Sports and Cultural Excellence</p>
+        </div>
+    </section>
+
+    <main class="events-container">
+        <div class="section-nav">
+            <button class="section-btn active" data-section="upcoming-events">Upcoming Events</button>
+            <button class="section-btn" data-section="past-events">Past Events</button>
+            <button class="section-btn" data-section="event-gallery">Event Gallery</button>
+        </div>
+
+        <section id="upcoming-events" class="events-section active-section">
+            <h2>Upcoming Events</h2>
+            <div class="scroller-container">
+                <div class="scroller-track">
+                    <div class="event-item">
+                        <div class="event-tag">Promothene</div>
+                        <div class="event-date">10th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Annual Day</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Athenes</div>
+                        <div class="event-date">12th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Nrithya</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Swarakruthi</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                    <!-- Duplicate items for seamless looping -->
+                    <div class="event-item">
+                        <div class="event-tag">Promothene</div>
+                        <div class="event-date">10th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Annual Day</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Athenes</div>
+                        <div class="event-date">12th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Nrithya</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-tag">Swarakruthi</div>
+                        <div class="event-date">11th April 2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="past-events" class="events-section">
+            <h2>Past Events</h2>
+            <div class="past-events-section">
+                <h3>Recent Events</h3>
+                <ul>
+                    <li>Sports Day 2024 - Winners: Computer Science Department</li>
+                    <li>Inter-College Cricket Tournament - Runners Up</li>
+                    <li>Annual Athletic Meet - 15 Gold Medals Won</li>
+                    <li>Cultural Fest 2024 - Best Performance Award</li>
+                    <li>Tech Symposium 2024 - Innovation Challenge Winners</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="event-gallery" class="events-section">
+            <h2>Event Gallery</h2>
+            <div class="slideshow-container">
+                <img src="../static/images/AV.jpeg" alt="Auto Verse" class="gallery-image">
+                <img src="../static/images/NRITYA.jpeg" alt="Athenes Nritya" class="gallery-image">
+                <img src="../static/images/SWARAKRUTHI.png" alt="Athenes Swarakruthi" class="gallery-image">
+                <img src="../static/images/CHITROSAV.png" alt="Chitrotsav" class="gallery-image">
+                <img src="../static/images/ATHENES.png" alt="Athenes" class="gallery-image">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BVRIT Sports Complex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Section switching
+            const sectionButtons = document.querySelectorAll('.section-btn');
+            const sections = document.querySelectorAll('.events-section');
+            
+            sectionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // Update active button
+                    sectionButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.classList.remove('active-section');
+                    });
+                    
+                    // Show selected section
+                    document.getElementById(sectionId).classList.add('active-section');
+                });
+            });
+
+            // Slideshow functionality
+            const slideshow = document.querySelector('.slideshow-container');
+            if (slideshow) {
+                const images = slideshow.querySelectorAll('img');
+                let currentIndex = 0;
+                let slideshowInterval;
+                
+                // Show first image
+                if (images.length > 0) {
+                    images[0].classList.add('active');
+                }
+                
+                // Function to rotate images
+                function rotateImages() {
+                    if (images.length > 0) {
+                        images[currentIndex].classList.remove('active');
+                        currentIndex = (currentIndex + 1) % images.length;
+                        images[currentIndex].classList.add('active');
+                    }
+                }
+                
+                // Start slideshow
+                slideshowInterval = setInterval(rotateImages, 3000);
+                
+                // Pause on hover
+                slideshow.addEventListener('mouseenter', () => {
+                    clearInterval(slideshowInterval);
+                });
+                
+                // Resume when mouse leaves
+                slideshow.addEventListener('mouseleave', () => {
+                    slideshowInterval = setInterval(rotateImages, 3000);
+                });
+            }
+        });
+    </script>
+</body>

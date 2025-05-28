@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | BVRIT Sports Complex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366; /* BVRIT blue */
+            --secondary: #2c3e50;
+            --accent: #FF8C00; /* BVRIT orange */
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #FF8C00;
+        }
+        
+        .current-page {
+            color: #FF8C00;
+            font-weight: bold;
+        }
+
+        /* FAQ Hero Section */
+        #faq-hero {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px; /* Push it below the fixed header */
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Content */
+        .faq-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .faq-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .faq-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-accordion {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+        
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        .faq-answer-content {
+            padding: 0 30px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-question {
+            background: var(--primary);
+        }
+        
+        .faq-item.active .faq-question h3 {
+            color: white;
+        }
+        
+        .faq-item.active .faq-question i {
+            color: white;
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 20px 0;
+        }
+        
+        .contact-info {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+            
+            .faq-answer-content {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bvritSports.html">BVRIT Sports</a></li>
+                    <li><a href="bvritEvents.html">BVRIT Events</a></li>
+                    <li><a href="login.html">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="faq-hero">
+        <div class="hero-content">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our sports facilities and booking process</p>
+        </div>
+    </section>
+
+    <div class="faq-container">
+        <div class="faq-header">
+            <h2>Common Questions</h2>
+            <p>Browse through our frequently asked questions below</p>
+        </div>
+        
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What are your booking hours?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Bookings are available during these hours only:</p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li>Morning: 8:00 AM to 10:00 AM</li>
+                            <li>Evening: 3:00 PM to 9:00 PM</li>
+                        </ul>
+                        <p style="margin-top: 10px;">No bookings are required between 10:00 AM to 3:00 PM as courts are available for walk-in use during this time.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I book a court?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Court bookings can be made through our online system during booking hours. Simply select your preferred date and time slot, then complete the booking form.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is the cancellation policy?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Cancellations must be made at least 2 hours before your booking time. Repeated no-shows may result in booking restrictions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use the courts without booking?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, courts are available for walk-in use between 10:00 AM to 3:00 PM on a first-come, first-served basis. No prior booking is needed during these hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h2>Need Further Assistance?</h2>
+            <p>For any other questions or concerns regarding sports facilities:</p>
+            <div class="contact-details">
+                <p>Contact Sports Faculty</p>
+                <p>Email: sports@bvrit.ac.in</p>
+                <p>Phone: +91 1234567890</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BVRIT Sports Complex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Highlight current page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (currentPage === linkPage) {
+                    link.classList.add('current-page');
+                }
+            });
+
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Open first item by default
+            if (faqItems.length > 0) {
+                faqItems[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

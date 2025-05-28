@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - BVRIT Sports Complex</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        .current-page {
+            color: #0066cc;
+        }
+
+        #about-hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://bvrit.ac.in/wp-content/uploads/2023/06/IndoorSportsCom.webp') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        #about-hero h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .facilities-box {
+            background-color: rgba(0,51,102,0.8);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            max-width: 600px;
+        }
+
+        .facilities-box h3 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .facilities-box ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .facilities-box ul li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 18px;
+        }
+
+        .facilities-box ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .tab-btn.active {
+            background-color: #FFA500;
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .about-section {
+            display: none;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .about-section.active {
+            display: block;
+        }
+
+        .about-section h2 {
+            color: #003366;
+            font-size: 32px;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .facility-category, .events-category, .awards-category {
+            margin-bottom: 30px;
+        }
+
+        .facility-category h3, .events-category h3, .awards-category h3 {
+            color: #0066cc;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .facility-category ul, .events-category ul, .awards-category ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .facility-category li, .events-category li, .awards-category li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+                gap: 15px;
+            }
+            
+            #about-hero h1 {
+                font-size: 36px;
+            }
+            
+            .facilities-box {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bvritSports.html">BVRIT Sports</a></li>
+                    <li><a href="bvritEvents.html">BVRIT Events</a></li>
+                    <li><a href="login.html">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about-hero">
+        <h1>About BVRIT Sports Complex</h1>
+        <div class="facilities-box">
+            <h3>Our Facilities</h3>
+            <ul>
+                <li>Badminton Courts</li>
+                <li>Cricket Ground</li>
+                <li>Basketball Court</li>
+                <li>Gymnasium</li>
+                <li>And many more...</li>
+            </ul>
+        </div>
+    </section>
+
+    <main class="about-container">
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab('facilities')">Facilities</button>
+            <button class="tab-btn" onclick="openTab('events')">Events</button>
+            <button class="tab-btn" onclick="openTab('awards')">Awards</button>
+        </div>
+        
+        <section id="facilities" class="about-section active">
+            <h2>Facilities</h2>
+            <div class="facility-category">
+                <h3>Indoor Facilities</h3>
+                <ul>
+                    <li>Badminton Courts</li>
+                    <li>Table Tennis</li>
+                    <li>Chess and Carrom Boards</li>
+                    <li>Yoga and Aerobics Room</li>
+                </ul>
+            </div>
+            <div class="facility-category">
+                <h3>Outdoor Facilities</h3>
+                <ul>
+                    <li>Cricket Ground</li>
+                    <li>Football Field</li>
+                    <li>Basketball Court</li>
+                    <li>Tennis Courts, Tennikoit, Ball Badminton, Throwball, etc</li>
+                    <li>Kabaddi & Kho Kho</li>
+                    <li>Athletic Track</li>
+                </ul>
+            </div>
+            <div class="facility-category">
+                <h3>Gymnasium</h3>
+                <ul>
+                    <li>Equipped with modern fitness machines</li>
+                    <li>Personal trainers available</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="events" class="about-section">
+            <h2>Events and Competitions</h2>
+            <div class="events-category">
+                <h3>ANNUAL SPORTS MEET</h3>
+                <ul>
+                    <li>Intra-college sports competition</li>
+                    <li>Track and field events, team sports, and individual sports</li>
+                </ul>
+            </div>
+            <div class="events-category">
+                <h3>Inter-Collegiate Competitions</h3>
+                <ul>
+                    <li>Padma Bhushan Dr B V Raju Memorial Tournament</li>
+                    <li>Participation in university and state-level competitions</li>
+                    <li>Collaboration with other colleges for friendly matches</li>
+                </ul>
+            </div>
+            <div class="events-category">
+                <h3>Inter-University Competitions</h3>
+                <ul>
+                    <li>Representing the college in national competitions</li>
+                    <li>Encouragement and support for elite athletes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="awards" class="about-section">
+            <h2>Awards and Recognitions</h2>
+            <p>BVRIT offers sports scholarships to support talented athletes in their academic and athletic pursuits. Best performers in each sport are recognized and celebrated for their exceptional skills and dedication. Outstanding achievements are highlighted, showcasing the hard work and success of individuals and teams.</p>
+            
+            <div class="awards-category">
+                <h3>Sports Scholarships</h3>
+                <ul>
+                    <li>Scholarships for outstanding athletes</li>
+                    <li>Support for training and participation in higher-level competitions</li>
+                </ul>
+            </div>
+            <div class="awards-category">
+                <h3>Awards and Trophies</h3>
+                <ul>
+                    <li>Annual sports awards ceremony</li>
+                    <li>Recognition for best performers in each sport</li>
+                </ul>
+            </div>
+            <div class="awards-category">
+                <h3>Recognition of Outstanding Achievements</h3>
+                <ul>
+                    <li>Honoring achievements in national and international events</li>
+                    <li>Featuring achievers in college publications</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BVRIT Sports Complex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('about-section');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the current tab and add active class to the button
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
+    <!-- JavaScript to highlight current page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (currentPage === linkPage) {
+                    link.classList.add('current-page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+</html>

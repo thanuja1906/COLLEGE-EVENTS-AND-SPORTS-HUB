@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Sport | BVRIT Sports Complex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #FF8C00;
+        }
+        
+        .current-page {
+            color: #FF8C00;
+            font-weight: bold;
+        }
+
+        main {
+            margin-top: 70px;
+            min-height: calc(100vh - 120px);
+            padding: 20px;
+        }
+         
+        .back-btn {
+            padding: 10px 20px;
+            background: #FF8C00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+        }
+
+        .sport-container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2C3E50;
+        }
+
+        .sport-dropdown {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #003366;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sport-dropdown:focus {
+            border-color: #002244;
+            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.3);
+        }
+
+        .select-btn {
+            padding: 15px 30px;
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .select-btn:hover {
+            background: #002244;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sport-icon {
+            font-size: 3rem;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sport-container {
+                padding: 30px 20px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bvritSports.html">BVRIT Sports</a></li>
+                    <li><a href="bvritEvents.html">BVRIT Events</a></li>
+                    <li><a href="login.html" class="current-page">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="login.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+        
+        <div class="sport-container">
+            <i class="fas fa-table-tennis sport-icon"></i>
+            <h2>Select Your Sport</h2>
+            <select class="sport-dropdown" id="sportDropdown">
+                <option value="">-- Select Sport --</option>
+                <option value="badminton">Badminton</option>
+                <option value="basketball">Basketball</option>
+                <option value="tennis">Tennis</option>
+            </select>
+            <button class="select-btn" id="selectSportBtn">Select Sport</button>
+            <div id="errorMsg" class="error-msg">Please select a valid sport to proceed.</div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('selectSportBtn').addEventListener('click', function() {
+            const selectedSport = document.getElementById('sportDropdown').value;
+            if (selectedSport) {
+                localStorage.setItem('selectedSport', selectedSport);
+                window.location.href = 'booking.html';
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

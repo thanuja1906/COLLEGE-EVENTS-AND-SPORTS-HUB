@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVRIT Sports | BVRIT Sports Complex</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        .current-page a {
+            color: #0066cc;
+        }
+
+        #sports-hero {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://bvrit.ac.in/wp-content/uploads/2023/06/IndoorSports.webp') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-top: 10px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .sports-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .section-btn {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .section-btn.active {
+            background-color: #FFA500;
+            color: white;
+        }
+
+        .section-btn:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .sports-section {
+            display: none;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .sports-section.active-section {
+            display: block;
+        }
+
+        .sports-section h2 {
+            color: #003366;
+            font-size: 32px;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .sports-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .sports-table th, .sports-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sports-table th {
+            background-color: #003366;
+            color: white;
+        }
+
+        .sports-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .sports-table tr:hover {
+            background-color: #e6e6e6;
+        }
+
+        .sports-category {
+            margin-bottom: 30px;
+        }
+
+        .sports-category h3 {
+            color: #0066cc;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .sports-category ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .sports-category li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+                gap: 15px;
+            }
+            
+            #sports-hero {
+                height: 300px;
+                margin-top: 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="sports-page">
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="current-page"><a href="bvritSports.html">BVRIT Sports</a></li>
+                    <li><a href="bvritEvents.html">BVRIT Events</a></li>
+                    <li><a href="login.html">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="sports-hero">
+        <div class="hero-content">
+            <h1>BVRIT Sports Programs</h1>
+            <p>Excellence in Athletics and Sports Education</p>
+        </div>
+    </section>
+
+    <main class="sports-container">
+        <div class="section-nav">
+            <button class="section-btn active" data-section="timetable">Time Table</button>
+            <button class="section-btn" data-section="sports-games">Sports & Games</button>
+            <button class="section-btn" data-section="training-coaching">Training & Coaching</button>
+        </div>
+
+        <section id="timetable" class="sports-section active-section">
+            <h2>Sports Timetable</h2>
+            <table class="sports-table">
+                <thead>
+                    <tr>
+                        <th>Sport</th>
+                        <th>Morning Session</th>
+                        <th>Evening Session</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Badminton</td>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>3:00 PM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Chess & Carrom</td>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>3:00 PM - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Table Tennis</td>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>3:00 PM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Cricket</td>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>3:00 PM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Basketball</td>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>4:00 PM - 7:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="sports-games" class="sports-section">
+            <h2>Sports and Games</h2>
+            <div class="sports-category">
+                <h3>Individual Sports</h3>
+                <ul>
+                    <li>Athletics</li>
+                    <li>Badminton</li>
+                    <li>Tennis</li>
+                    <li>Table Tennis</li>
+                    <li>Chess</li>
+                </ul>
+            </div>
+            <div class="sports-category">
+                <h3>Team Sports</h3>
+                <ul>
+                    <li>Cricket</li>
+                    <li>Football</li>
+                    <li>Basketball</li>
+                    <li>Volleyball</li>
+                    <li>Kho Kho</li>
+                    <li>Kabaddi</li>
+                </ul>
+            </div>
+            <div class="sports-category">
+                <h3>Recreational Activities</h3>
+                <ul>
+                    <li>Yoga & Meditation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="training-coaching" class="sports-section">
+            <h2>Training and Coaching</h2>
+            <div class="sports-category">
+                <h3>Coaching Staff</h3>
+                <ul>
+                    <li>Experienced and qualified coaches</li>
+                    <li>Regular workshops and training sessions</li>
+                </ul>
+            </div>
+            <div class="sports-category">
+                <h3>Training Schedule</h3>
+                <ul>
+                    <li>Weekly training schedules for each sport</li>
+                    <li>Special sessions for advanced training</li>
+                </ul>
+            </div>
+            <div class="sports-category">
+                <h3>Special Training Programs</h3>
+                <ul>
+                    <li>For Big Tournaments</li>
+                    <li>Advice from Experts</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BVRIT Sports Complex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionButtons = document.querySelectorAll('.section-btn');
+            const sections = document.querySelectorAll('.sports-section');
+            
+            // Show timetable by default
+            document.querySelector('#timetable').classList.add('active-section');
+            
+            sectionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // Update button states
+                    sectionButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update section visibility
+                    sections.forEach(section => {
+                        section.classList.remove('active-section');
+                        if (section.id === sectionId) {
+                            section.classList.add('active-section');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+
+    <!-- JavaScript to highlight current page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (currentPage === linkPage) {
+                    link.classList.add('current-page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

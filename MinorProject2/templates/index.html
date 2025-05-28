@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVRIT Sports Complex</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* Highlight current page */
+        nav ul li a.current-page {
+            color: #FF8C00; /* Orange color */
+            font-weight: bold;
+        }
+
+        .dropdown::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        #hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.shiksha.com/mediadata/images/1595846985phpW2q9ja.jpeg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        #hero h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        #hero p {
+            font-size: 24px;
+            margin-top: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .partners-section {
+            background-color: #f5f5f5;
+            padding: 50px 0;
+        }
+
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .partner {
+            margin-bottom: 40px;
+        }
+
+        .partner h3 {
+            color: #0066cc;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .partner p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Table Styles */
+        .committee-section {
+            width: 100%;
+            margin: 50px 0;
+        }
+
+        .committee-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e6f2ff;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">BVRIT Sports Complex</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown"><a href="bvritSports.html">BVRIT Sports Center</a></li>
+                    <li><a href="bvritEvents.html">BVRIT Events</a></li>
+                    <li><a href="login.html">Slot Bookings</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h1>Welcome to the BVRIT Sports Complex</h1>
+        <p>Home of the BVRIT Sports Center and BVRIT Events</p>
+    </section>
+
+    <section class="content-section">
+        <h2>Vision & Objectives</h2>
+        <div class="vision">
+            <h3>Vision</h3>
+            <p>To be one of the best sporting colleges, fostering a competitive spirit and serving as the most sought-after destination for aspiring sports champions.</p>
+        </div>
+        <div class="objectives">
+            <h3>Objectives</h3>
+            <ul>
+                <li>Encourage participating and competing in sports and games & nurture winning habits.</li>
+                <li>Foster critical skills such as teamwork, discipline, and strategic thinking.</li>
+                <li>Promote teamwork and leadership qualities and develop true sporting spirit.</li>
+                <li>Organize and participate in competitions at various levels.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="committee-section">
+        <div class="committee-container">
+            <h2>Sports Committee</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Qualification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R V Narsimha Raju</td>
+                        <td>Sr. Physical Director</td>
+                        <td>M.A, M.P.Ed, M.Phil, (Ph.D)</td>
+                    </tr>
+                    <tr>
+                        <td>V Sripathi Raja</td>
+                        <td>Faculty In-Charge</td>
+                        <td>M.Tech</td>
+                    </tr>
+                    <tr>
+                        <td>A L Kishore</td>
+                        <td>Faculty Advisor</td>
+                        <td>M.Tech</td>
+                    </tr>
+                    <tr>
+                        <td>Manik Pawar</td>
+                        <td>Physical Director</td>
+                        <td>M.A, M.P.Ed</td>
+                    </tr>
+                    <tr>
+                        <td>K Madhavi</td>
+                        <td>Physical Director</td>
+                        <td>B.A, M.P.Ed, Pg Dip. In Yoga</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BVRIT Sports Complex. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to highlight current page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (currentPage === linkPage) {
+                    link.classList.add('current-page');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
