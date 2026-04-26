@@ -115,7 +115,8 @@ Select Sport → Select Date → Select Court → Select Time → Confirm Bookin
 
 ### 🏠 Home Page
 
-![Home](screenshots/home.png)
+![Home](MinorProject2/screenshots/home.png)
+![Home](MinorProject2/screenshots/home2.png)
 
 ### ℹ️ About Page
 
