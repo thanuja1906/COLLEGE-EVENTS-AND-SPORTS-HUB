@@ -31,7 +31,6 @@ It ensures a seamless experience for **students, faculty, and administrators**.
 
 ✔️ Real-time slot booking system
 ✔️ Faculty vs Student court access logic
-✔️ OTP-based authentication
 ✔️ Dynamic event management
 ✔️ Responsive UI design
 ✔️ Booking cancellation system
@@ -65,11 +64,6 @@ It ensures a seamless experience for **students, faculty, and administrators**.
 ---
 
 ### 🎟️ Slot Booking (Core Module)
-
-#### 🔐 Authentication
-
-* Email login
-* OTP verification system
 
 #### ⚙️ Booking Flow
 
