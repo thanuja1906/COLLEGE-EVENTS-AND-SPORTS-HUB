@@ -101,7 +101,6 @@ Select Sport → Select Date → Select Court → Select Time → Confirm Bookin
 | Frontend | HTML, CSS, JavaScript |
 | Backend  | Flask (Python)        |
 | Database | SQLite                |
-| ORM      | SQLAlchemy            |
 
 ---
 
