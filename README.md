@@ -116,51 +116,41 @@ Select Sport → Select Date → Select Court → Select Time → Confirm Bookin
 ### 🏠 Home Page
 
 ![Home](MinorProject2/screenshots/home.png)
-![Home](MinorProject2/screenshots/home2.png)
 
 ### ℹ️ About Page
-
-![About](screenshots/about.png)
+![About](MinorProject2/screenshots/about.png)
 
 ### 🏅 Facilities
 
-![Facilities](screenshots/facilities.png)
-
+![Facilities](MinorProject2/screenshots/facilities.png)
 ### 📅 Events
 
-![Events](screenshots/events.png)
+![Events](MinorProject2/screenshots/upEvents.png)
+![Events](MinorProject2/screenshots/eventGallery.png)
 
 ### 📊 Timetable
 
-![Timetable](screenshots/timetable.png)
+![Timetable](MinorProject2/screenshots/timetable.png)
 
 ### 🎟️ Booking Entry
 
-![Booking](screenshots/booking-entry.png)
+![Booking](MinorProject2/screenshots/slotBooking.png)
 
 ### 🎯 Select Sport
 
-![Select Sport](screenshots/select-sport.png)
+![Select Sport](MinorProject2/screenshots/sportSelection.png)
 
 ### 🏸 Booking UI
 
-![Booking UI](screenshots/booking-ui.png)
-
-### 📋 My Bookings
-
-![My Bookings](screenshots/my-bookings.png)
-
-### 🔐 OTP Verification
-
-![OTP](screenshots/otp.png)
+![Booking UI](MinorProject2/screenshots/badmintonBooking.png)
 
 ### 📞 Contact Page
 
-![Contact](screenshots/contact.png)
+![Contact](MinorProject2/screenshots/contact.png)
 
 ### ❓ FAQ
 
-![FAQ](screenshots/faq.png)
+![FAQ](MinorProject2/screenshots/faq.png)
 
 ---
 
@@ -169,8 +159,8 @@ Select Sport → Select Date → Select Court → Select Time → Confirm Bookin
 ### 1️⃣ Clone Repo
 
 ```bash
-git clone https://github.com/your-username/bvrit-sports-complex.git
-cd bvrit-sports-complex
+git clone https://github.com/thanuja1906/COLLEGE-EVENTS-AND-SPORTS-HUB.git
+cd COLLEGE-EVENTS-AND-SPORTS-HUB
 ```
 
 ### 2️⃣ Setup Environment
@@ -248,7 +238,3 @@ If you like this project:
 📢 Share it
 
 ---
-
-## 📜 License
-
-This project is for educational purposes.
